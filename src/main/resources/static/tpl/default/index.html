@@ -1,10 +1,164 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">	
 <head>
-<meta charset="UTF-8">
-<title>title</title>
+	<meta charset="UTF-8">
+	<!--
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+	<script type="text/javascript" src="js/flexible.min.js"></script>
+	-->
+	<script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.2/??flexible_css.js,flexible.js"></script>
+
+	<title>产品展示</title>
+	<link rel="stylesheet" type="text/css" href="css/cube_y.min.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+	<!-- Add the slick-theme.css if you want default styling -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css"/>
+
 </head>
+
 <body>
-	hello world, i am little bird!
+	<!-- 产品图片轮播 -->
+	<div class="imageSlider">
+	  <div><div class="image"> <img src="images/slider-1.jpg"></div></div>
+	  <div><div class="image"> <img src="images/slider-2.jpg"></div></div>
+	  <div><div class="image"> <img src="images/slider-3.jpg"></div></div>
+	  <div><div class="image"> <img src="images/slider-4.jpg"></div></div>
+	  <div><div class="image"> <img src="images/slider-5.jpg"></div></div>
+	</div>
+
+	<!-- 企业基本联系方式 -->
+	<div class="basic_contact">
+		<ul class="contact_block">
+			<li class="contact_tel">
+				<span>客服电话：</span>
+				<a href="tel:400-800-8888">&nbsp&nbsp400-800-8888</a>
+			</li>
+
+			<li class="contact_website">
+				<a href="http://www.baidu.com">官方网站</a>
+			</li>
+
+			<li class="contact_weixin">
+				<div class="fl">微&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp信：</div>
+				<a href="#openModal">&nbsp&nbsp透云科技</a>
+			</li>
+	
+			<li class="contact_addr">
+				<span>上海市静安区共和新路1209号7幢418室</span>
+			</li>
+		</ul>
+	</div>
+
+	<div class="content">
+		<!-- 产品详情 -->
+		<div class="tree_box product_detail">
+			<div class="tree_box_content">	
+				<div class="tree_box_title">产品详情</div>
+				<div class="product_info">
+
+					<p>&nbsp&nbsp&nbsp&nbsp国画一词起源于汉代，汉朝人认为中国是居天地之中者，所以称为中国，将中国的绘画称为“中国画”，简称“国画”。</p>
+					<br>
+					<p><img src="images/detail-1.jpg"></p>
+					<br>
+					
+					<p>&nbsp&nbsp&nbsp&nbsp国画主要指的是画在绢、宣纸、帛上并加以装裱的卷轴画。国画是中国的传统绘画形式，是用毛笔蘸水、墨、彩作画于绢或纸上。工具和材料有毛笔、墨、国画颜料、宣纸、绢等，题材可分人物、山水、花鸟等，技法可分具象和写意。</p>
+					<br>
+					<p><img src="images/detail-2.jpg"></p>
+					<br>
+
+					<p>&nbsp&nbsp&nbsp&nbsp​中国画在内容和艺术创作上，体现了古人对自然、社会及与之相关联的政治、哲学、宗教、道德、文艺等方面的认知。</p>
+					<br>
+					<p><img src="images/detail-3.jpg"></p>
+				</div>
+
+				<div class="arrow_down" onclick="contentExpandAndShrink(this)"></div>
+			</div>
+		</div>
+		
+		<!--
+		<div class="tree_box access_log">
+			<div class="tree_box_content">	
+				<div class="tree_box_title">访问记录</div>
+				<div class="log_list">
+					<#list data.accesslogs as item>	
+						<p>${item.address.fullAddress}</p>
+				    	<span>${item.time?string('yyyy-MM-dd HH:mm:ss')}</span>
+					</#list>
+				</div>
+
+				<div class="arrow_down" onclick="contentExpandAndShrink(this)"></div>
+			</div>
+		</div>
+		-->
+
+	</div>
+	<div id="openModal" class="modalDialog">
+		<div>
+			<a href="#close" title="Close" class="close">X</a>
+			<p style=" font-size: 0.4rem">长按二维码</p>
+			<p>选择"识别图中二维码"</p>
+			<img src="images/ningyun_weixin.jpg" alt="凝云科技" style="vertical-align: middle">
+		</div>
+	</div>
+
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/3.1.0/jquery.min.js"></script>
+	<!--
+	<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	-->
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+
+	<script type="text/javascript">
+		
+		// 图片轮播脚本
+		$(document).ready(function(){
+		  $('.imageSlider').slick({
+		  	dots: true,
+		  	speed: 300,
+  			slidesToShow: 1,
+		    autoplay: true,
+		    autoplaySpeed: 1500,
+		    fade: true
+		  });
+		  if(!is_weixn()) {
+			  	$(".fl").next().remove();
+			  	$(".fl").after("<p>（请在微信中打开）</p>");
+			  	$(".fl").parent().addClass('clear_after');
+			  }
+		});
+		
+		// 是否是微信浏览器
+		function is_weixn(){  
+		    var ua = navigator.userAgent.toLowerCase();  
+		    if(ua.match(/MicroMessenger/i)=="micromessenger") {  
+		        return true;  
+		    } else {  
+		        return false;  
+		    }  
+		}  
+				// div收缩与扩展
+		function contentExpandAndShrink(obj) {
+			if($(obj).hasClass('arrow_down')) {
+
+				$(obj).prev().css({
+					overflow: 'initial',
+					height: 'auto'
+				});
+				$(obj).removeClass('arrow_down').addClass('arrow_up');
+
+			} else if ($(obj).hasClass('arrow_up')) {
+
+				$(obj).prev().css({
+					overflow: 'hidden',
+					height: '4.266667rem'
+				});
+				$(obj).removeClass('arrow_up').addClass('arrow_down');
+
+			}
+		}
+
+	</script>
 </body>
 </html>

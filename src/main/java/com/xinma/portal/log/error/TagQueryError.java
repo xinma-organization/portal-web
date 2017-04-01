@@ -10,6 +10,7 @@ public enum TagQueryError implements CustomError {
 
 	TagDifferFromCloudErr("portal-query-003", "the decode tag is differ with tag in cloud."),
 
+	TagQueryExceptionErr("portal-query-004", "catch exception in TagQuery request."),
 	;
 
 	String value;

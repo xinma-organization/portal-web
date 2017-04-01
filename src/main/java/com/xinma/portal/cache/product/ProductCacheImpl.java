@@ -29,7 +29,8 @@ import redis.clients.jedis.JedisPool;
 @Component("productCache")
 public class ProductCacheImpl implements ProductCache {
 
-	@Autowired
+	// TODO
+//	@Autowired
 	private JedisPool jedisPool;
 
 	/**

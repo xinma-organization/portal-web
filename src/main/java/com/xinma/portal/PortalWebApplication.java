@@ -17,7 +17,7 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.ContextStartedEvent;
 import org.springframework.context.event.ContextStoppedEvent;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages={"com.xinma"})
 public class PortalWebApplication implements ApplicationListener<ApplicationEvent> {
 
 	Logger logger = LoggerFactory.getLogger(PortalWebApplication.class);
